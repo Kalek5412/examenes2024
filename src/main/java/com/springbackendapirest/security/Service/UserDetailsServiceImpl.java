@@ -1,25 +1,24 @@
-package com.springbackendapirest.security.Service;
+package com.springbackendapirest.security.service;
 
-import com.springbackendapirest.security.entidades.Usuario;
-import com.springbackendapirest.security.repository.UsuarioRepository;
+
+
+import com.springbackendapirest.security.entity.Usuario;
+import com.springbackendapirest.security.entity.UsuarioPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
+//cpnvierte la clase usuario en un usuario principal
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    UsuarioService usuarioService;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = this.usuarioRepository.findByUsername(username);
-        if(usuario == null){
-            throw new UsernameNotFoundException("Usuario no encontrado");
-        }
-        return usuario;
+    public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
+        Usuario usuario = usuarioService.getByNombreUsuario(nombreUsuario).get();
+        return UsuarioPrincipal.build(usuario);
     }
 }

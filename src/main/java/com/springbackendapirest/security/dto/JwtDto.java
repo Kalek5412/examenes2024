@@ -1,13 +1,14 @@
-package com.springbackendapirest.security.auth;
+package com.springbackendapirest.security.dto;
 
-public class JwtResponse {
+
+public class JwtDto {
     private String token;
 
-    public JwtResponse(String token) {
-        this.token = token;
+    public JwtDto() {
     }
 
-    public JwtResponse() {
+    public JwtDto(String token) {
+        this.token = token;
     }
 
     public String getToken() {
@@ -17,4 +18,6 @@ public class JwtResponse {
     public void setToken(String token) {
         this.token = token;
     }
+
+
 }

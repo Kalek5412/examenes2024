@@ -1,9 +1,6 @@
 package com.springbackendapirest;
 
-import com.springbackendapirest.security.Service.servInt.UsuarioService;
-import com.springbackendapirest.security.entidades.Rol;
-import com.springbackendapirest.security.entidades.Usuario;
-import com.springbackendapirest.security.entidades.UsuarioRol;
+import com.springbackendapirest.security.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
